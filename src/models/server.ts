@@ -1,5 +1,5 @@
 const express = require('express');
-import { Request, Response , Application } from 'express';
+import { Request, Response, Application } from 'express';
 import { routerApi } from '../routes';
 
 export default  class Server {

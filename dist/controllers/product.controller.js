@@ -18,7 +18,7 @@ exports.getProduct = getProduct;
 const postProduct = (req, res) => {
     const body = req.body;
     res.json({
-        msg: 'Producto a eliminar',
+        msg: 'crear un producto',
         products: body,
     });
 };
@@ -27,7 +27,7 @@ const putProduct = (req, res) => {
     const paramId = req.params;
     const body = req.body;
     res.json({
-        msg: 'Producto a actualizar parcialmente',
+        msg: 'Producto a actualizar completamente',
         id: paramId,
         product: body,
     });

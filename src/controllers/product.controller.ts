@@ -10,14 +10,15 @@ const getProduct = (req: Request, res: Response) => {
   const paramId = req.params;
   res.json({
     id: paramId,
-    products: 'Aquí iría el producto si lo tuviera = D'
+    products: 'Aquí iría el producto'
   })
 };
 
 const postProduct = (req: Request, res: Response) => {
   const body = req.body;
+
   res.json({
-    msg: 'Producto a eliminar',
+    msg: 'crear un producto',
     products: body,
   })
 };
@@ -25,7 +26,7 @@ const putProduct = (req: Request, res: Response) => {
   const paramId = req.params;
   const body = req.body;
   res.json({
-    msg: 'Producto a actualizar parcialmente',
+    msg: 'Producto a actualizar completamente',
     id: paramId,
     product: body,
   })
