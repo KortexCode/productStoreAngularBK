@@ -6,5 +6,4 @@ const sequelize = new Sequelize(config.dbName, config.dbHost, config.dbPassword,
   dialect: 'mysql',
 });
 
-
-export {sequelize}
+export {sequelize};
