@@ -1,7 +1,7 @@
-const express = require("express");
-import { Request, Response, Application } from "express";
+import { Router, Request, Response, Application } from "../util/express";
 import productRouter from "./product.route";
-const router = express.Router();
+import userRouter from "./user.route";
+const router = Router();
 
 //Se crea función routerApi, esta función generará rutas para la api
 function routerApi(app: Application) {
@@ -11,6 +11,8 @@ function routerApi(app: Application) {
   });
   //Ruta de productos
   router.use("/products", productRouter);
+  //Ruta de login
+  router.use("/users", userRouter);
   //url común de la Api
   app.use("/api/v1", router);
 }

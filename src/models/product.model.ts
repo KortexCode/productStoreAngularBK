@@ -1,5 +1,4 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "../db/connection";
+import { sequelize, DataTypes } from "../db/connection";
 
 const productModel = sequelize.define(
   "products",
@@ -26,6 +25,7 @@ const productModel = sequelize.define(
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
+    timestamps: false,
   },
 );
 

@@ -4,6 +4,8 @@ import { Application } from "express";
 import { sequelize } from "../db/connection";
 import { routerApi } from "../routes";
 import { config } from "../../config/config";
+import { productModel } from "./product.model";
+import { userModel } from "./user.model";
 
 export default class Server {
   private app: Application;
@@ -32,6 +34,8 @@ export default class Server {
     try {
       await sequelize.authenticate();
       console.log("Connection has been established successfully.");
+      await productModel.sync();
+      await userModel.sync();
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
