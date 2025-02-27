@@ -5,9 +5,7 @@ import { json } from "sequelize";
 const getProducts = async (req: Request, res: Response) => {
   try {
     const productList = await productModel.findAll();
-    res.json({
-      products: productList,
-    });
+    res.send(productList);
   } catch (error) {
     console.error(error);
   }

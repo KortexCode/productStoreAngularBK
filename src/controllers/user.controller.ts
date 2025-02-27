@@ -2,7 +2,8 @@ import { Response, Request } from "../util/express";
 import { bcrypt } from "../util/bcrypt";
 import { userModel } from "../models/user.model";
 
-const postUsers = async (req: Request, res: Response) => {
+//Crear un usuario
+export const postUser = async (req: Request, res: Response) => {
   const { user_name, password, dateCreated } = req.body;
   //Se encripta el código
   const user_password = await bcrypt.hash(password, 10);
@@ -42,11 +43,13 @@ const postUsers = async (req: Request, res: Response) => {
     });
   }
 };
-const postUserLogin = async (req: Request, res: Response) => {
+
+//Validar inicio de sesión de un usuario
+export const getLoginUser = async (req: Request, res: Response) => {
   const { msg } = req.body;
   res.json({
     msg,
   });
 };
 
-export { postUsers, postUserLogin };
+
