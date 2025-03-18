@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 interface ConfigEnv {
@@ -6,13 +6,15 @@ interface ConfigEnv {
   dbHost: string;
   dbPassword: string | undefined;
   dbName: string;
+  secretKey: string;
 }
 
 const config: ConfigEnv = {
-  port: process.env.PORT || '3000',
-  dbHost: process.env.SQHOSTNAME || 'root',
+  port: process.env.PORT || "3000",
+  dbHost: process.env.SQHOSTNAME || "root",
   dbPassword: process.env.SQPASSWORD,
-  dbName: process.env.SQBDNAME || 'name',
+  dbName: process.env.SQBDNAME || "name",
+  secretKey: process.env.SECRET_KEY || "secret",
 };
 
 export { config };

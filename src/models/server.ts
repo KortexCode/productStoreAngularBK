@@ -39,5 +39,7 @@ export default class Server {
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
+    await userModel.sync();
+    await productModel.sync();
   }
 }

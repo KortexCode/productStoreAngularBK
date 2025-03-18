@@ -1,8 +1,8 @@
 import { Response, Request } from "express";
 import { productModel } from "../models/product.model";
-import { json } from "sequelize";
+
 //Obtener todos los productos
-const getProducts = async (req: Request, res: Response) => {
+export const getProducts = async (req: Request, res: Response) => {
   try {
     const productList = await productModel.findAll();
     res.send(productList);
@@ -11,7 +11,7 @@ const getProducts = async (req: Request, res: Response) => {
   }
 };
 //Obtener un producto
-const getProduct = async (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const product = await productModel.findByPk(id);
@@ -30,7 +30,7 @@ const getProduct = async (req: Request, res: Response) => {
   }
 };
 //Crear un producto
-const postProduct = async (req: Request, res: Response) => {
+export const postProduct = async (req: Request, res: Response) => {
   const {
     name: product_name,
     description: product_description,
@@ -57,7 +57,7 @@ const postProduct = async (req: Request, res: Response) => {
   }
 };
 //Actualizar un producto
-const putProduct = async (req: Request, res: Response) => {
+export const putProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
   const body = req.body;
   try {
@@ -89,7 +89,7 @@ const putProduct = async (req: Request, res: Response) => {
     });
   }
 };
-const patchProduct = (req: Request, res: Response) => {
+export const patchProduct = (req: Request, res: Response) => {
   const { id } = req.params;
   const body = req.body;
   res.json({
@@ -98,7 +98,7 @@ const patchProduct = (req: Request, res: Response) => {
     products: body,
   });
 };
-const deleteProduct = async (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const product = await productModel.findByPk(id);
@@ -115,13 +115,4 @@ const deleteProduct = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
   }
-};
-
-export {
-  getProducts,
-  getProduct,
-  deleteProduct,
-  postProduct,
-  putProduct,
-  patchProduct,
 };

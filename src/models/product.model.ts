@@ -1,3 +1,4 @@
+import { DATE, DATEONLY } from "sequelize";
 import { sequelize, DataTypes } from "../db/connection";
 
 const productModel = sequelize.define(
@@ -20,6 +21,9 @@ const productModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    dateCreated: {
+      type: DATEONLY,
+    }
   },
   {
     freezeTableName: true,
