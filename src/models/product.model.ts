@@ -22,7 +22,7 @@ const productModel = sequelize.define(
       allowNull: false,
     },
     dateCreated: {
-      type: DATEONLY,
+      type: DATE,
     }
   },
   {

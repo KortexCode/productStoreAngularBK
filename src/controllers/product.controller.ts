@@ -5,7 +5,7 @@ import { productModel } from "../models/product.model";
 export const getProducts = async (req: Request, res: Response) => {
   try {
     const productList = await productModel.findAll();
-    res.send(productList);
+    res.json(productList);
   } catch (error) {
     console.error(error);
   }
@@ -30,24 +30,26 @@ export const getProduct = async (req: Request, res: Response) => {
   }
 };
 //Crear un producto
-export const postProduct = async (req: Request, res: Response) => {
-  const {
-    name: product_name,
-    description: product_description,
-    price,
-    stock,
-  } = req.body;
+export const postCreateProduct = async (req: Request, res: Response) => {
+  const body = req.body;
+
   try {
-    await productModel.create({
-      product_name,
-      product_description,
-      price,
-      stock,
-    });
-    res.json({
-      msg: "product created",
-      products: req.body,
-    });
+    const product = await productModel.findOne({where: {
+      product_name: body.product_name,
+    }})
+    if(product){
+      res.json({
+        status: 'false',
+        message: 'Product already exist'
+      })
+    }else {
+      await productModel.create(body);
+      res.json({
+        status:'true',
+        message: "product created",
+        product: req.body,
+      });
+    }
   } catch (error) {
     console.error(error);
     res.status(404).json({
@@ -89,30 +91,5 @@ export const putProduct = async (req: Request, res: Response) => {
     });
   }
 };
-export const patchProduct = (req: Request, res: Response) => {
-  const { id } = req.params;
-  const body = req.body;
-  res.json({
-    msg: "Producto a actualizar parcialmente",
-    id,
-    products: body,
-  });
-};
-export const deleteProduct = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  try {
-    const product = await productModel.findByPk(id);
-    if (!product) {
-      res.status(404).json({
-        msg: `product with di ${id} no found`,
-      });
-    } else {
-      await product.destroy();
-      res.json({
-        mgs: "Product was deleted with success",
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
+
+

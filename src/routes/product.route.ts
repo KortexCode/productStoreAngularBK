@@ -4,9 +4,9 @@ import validateToken from "./validate-token";
 
 const router = Router();
 //RUTAS PARA EL ENDPOINT DE PRODUCTOS
-router.get("/", validateToken, productController.getProducts);
+router.get("/", validateToken,productController.getProducts);
 router.get("/:id", productController.getProduct);
-router.post("/", productController.postProduct);
+router.post("/create/product", productController.postCreateProduct);
 router.put("/:id", productController.putProduct);
 
 export default router;

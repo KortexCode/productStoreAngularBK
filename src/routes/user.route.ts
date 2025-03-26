@@ -5,7 +5,7 @@ import validateToken from "./validate-token";
 
 const router = Router();
 
-router.post("/", userController.postUser);
+router.post("/create/user", userController.postUserCreate);
 router.post("/login", userController.loginUser);
 
 export default router;
